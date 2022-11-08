@@ -1,0 +1,22 @@
+{
+  "name": "datavisproject",
+  "version": "1.0.0",
+  "description": "Repo pour le projet de data visualisation",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ptitjbus/DataVisProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ptitjbus/DataVisProject/issues"
+  },
+  "homepage": "https://github.com/Ptitjbus/DataVisProject#readme",
+  "dependencies": {
+    "three": "^0.146.0"
+  }
+}
