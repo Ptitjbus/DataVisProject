@@ -109,26 +109,12 @@
             }
 
             // event for selected point
-            // viewer.selectedEntityChanged.addEventListener(function(selectedEntity) {
-            //     if (Cesium.defined(selectedEntity)) {
-            //         if (Cesium.defined(selectedEntity.name)) {
-            //             document.querySelector("#infoBox").classList.toggle('disappear', false)
-            //             document.getElementById("objectName").innerText = selectedEntity.name
-            //             document.getElementById("objectId").innerText = selectedEntity.objectId
-            //             document.getElementById("objectEpoch").innerText = selectedEntity.epoch
-            //             document.getElementById("objectOrigin").innerText = selectedEntity.origin
-            //             document.getElementById("objectLaunchDate").innerText = selectedEntity.launchDate
-            //             document.getElementById("objectSize").innerText = selectedEntity.size
-                        
-            //         } else {
-            //             console.log('Unknown entity selected.');
-            //         }
-            //     } else {
-            //         viewer.scene.camera.flyHome(2)
-            //         viewer.trackedEntity = viewer.globe ;
-            //         document.querySelector("#infoBox").classList.toggle('disappear', true)
-            //     }
-            // })
+            viewer.selectedEntityChanged.addEventListener(function(selectedEntity) {
+                if (!Cesium.defined(selectedEntity)) {
+                    viewer.scene.camera.flyHome(2)
+                    viewer.trackedEntity = viewer.globe ;
+                }
+            })
 
             //filters
             for(let button of document.querySelectorAll(".inputBtn")){

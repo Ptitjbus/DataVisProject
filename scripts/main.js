@@ -14,7 +14,10 @@ let introContinueBtn = document.getElementById("introContinueBtn")
 let helperContainer = document.getElementById("helperContainer")
 let helperContainerCharacter = document.getElementById("helperContainerCharacter")
 var duration = 0
-let reloaded = false
+let onKeyHandlerCallback
+let beginQuizzBtnClickCallback
+let replayCounter = false 
+let displayHelperOnReplay = true
 
 landingBtn.addEventListener("click",(e)=> {
     e.preventDefault()
@@ -133,25 +136,33 @@ function waitingKeypress() {
 
 async function viewer(){    
     await sleep(1000)
-    helperContainer.classList.toggle('disappear', false) 
-    helperContainerCharacter.classList.toggle('disappear', false) 
-    await displayHelper(5, "right")
+    if(displayHelperOnReplay){
+        helperContainer.classList.toggle('disappear', false) 
+        helperContainerCharacter.classList.toggle('disappear', false) 
+        await displayHelper(5, "right")
+    }
     let timoutFunc = setTimeout(function(){
     document.getElementById("bottomBar").style.height = 15 + "vh"
     document.getElementById("beginQuizz").classList.remove("d-none")
     },15000)
     let beginQuizzBtn = document.getElementById("beginQuizz")
-    beginQuizzBtn.addEventListener("click", function(e){
+
+    beginQuizzBtnClickCallback = (e) => {
+        beginQuizzBtnClick(e)
+    }
+    
+    beginQuizzBtn.addEventListener("click", beginQuizzBtnClickCallback)    
+
+    function beginQuizzBtnClick(e){
         e.preventDefault()
         document.getElementById("quizzIntro").classList.add("d-none")
         document.getElementById("quizz").classList.remove("d-none", "disappear")
         quizz()
-    })    
+    }
 
 }
 
 async function quizz(){
-    console.log("quizz")
     let questionText = document.querySelector(".questionText")
     let awnsersContainer = document.querySelector(".awnsersContainer")
     let pageInfo = document.querySelector(".pageInfo")
@@ -173,7 +184,7 @@ async function quizz(){
                 input.setAttribute("name",`radioAwnser${question.id}`)
                 input.setAttribute("id",`radioAwnser${counter}`)
                 input.setAttribute("data-answerId",counter)
-                input.classList.add("inputRadio","d-none")
+                input.classList.add("inputRadio","d-none","anwser")
                 label.setAttribute("for",`radioAwnser${counter}`)
                 label.classList.add("button","answersButton")
                 label.innerText = answer
@@ -196,36 +207,38 @@ async function quizz(){
     })
 }
 
+
 function waitingGoodAnwser(question) {
-    console.log(question)
     if(question.id === 4){
         document.getElementById("nextBtn").value = "LANCEMENT"
     }
     return new Promise((resolve) => {
-    document.getElementById("nextBtn").addEventListener("click", onKeyHandler)
-            console.log("passe")
-
-      function onKeyHandler(e) {
-        e.preventDefault()
-        if(question.id === 4){
-            launching()
+        onKeyHandlerCallback = (e) => {
+            onKeyHandler(e,question)
         }
-        let isGood = false
-        for(let input of document.getElementsByName(`radioAwnser${question.id}`)){
-            if(input.checked){
-                isGood = parseInt(input.dataset.answerid) === question.goodAnwserId
+        document.getElementById("nextBtn").addEventListener("click",onKeyHandlerCallback)    
+        
+        function onKeyHandler(e, question) {
+            e.preventDefault()
+            if(Array.from(document.querySelectorAll(".anwser")).some(element => element.checked)){
+                if(question.id === 4){
+                    launching()
+                }
+                let isGood = false
+                for(let input of document.getElementsByName(`radioAwnser${question.id}`)){
+                    if(input.checked){
+                        isGood = parseInt(input.dataset.answerid) === question.goodAnwserId
+                    }
+                }
+                if (isGood) {
+                    document.getElementById("nextBtn").removeEventListener('click', onKeyHandlerCallback);
+                    resolve();
+                }else{
+                    displayHelper(7,"left")
+                    document.getElementById("littleCharacter").style.opacity = 0
+                }
             }
         }
-        if (isGood) {
-            console.log("juste")
-            document.getElementById("nextBtn").removeEventListener('click', onKeyHandler);
-            resolve();
-        }else{
-            displayHelper(7,"left")
-            document.getElementById("littleCharacter").style.opacity = 0
-            console.log("faux")
-        }
-      }
     });
 }
 
@@ -237,24 +250,33 @@ function launching(){
         let reloadExperience = document.getElementById("reloadExperience")
         reloadExperience.classList.remove("d-none")
         reloadExperience.addEventListener("click",(e)=>{
-            e.preventDefault()        
-            location.reload()
+            e.preventDefault()      
+            if(!replayCounter){
+                initViewer()
+            }else{
+                location.reload()
+            }
         })
         
     },10000)
 }
 
-// async function initViewer(){
-//     reloaded=true            
-//     console.clear()
-//     showDataTab(0)
-//     document.getElementById("nextBtn").value = "Suivant"
-//     document.getElementById("quizzIntro").classList.remove("d-none")
-//     document.getElementById("quizz").classList.add("d-none", "disappear")
-//     goTo(launchingPage,viewerPage)
-//     viewer()
+async function initViewer(){ 
+    replayCounter = true
+    displayHelperOnReplay = false
+    console.clear()
+    showDataTab(0)
+    document.getElementById("nextBtn").removeEventListener('click', onKeyHandlerCallback);
+    document.getElementById("beginQuizz").removeEventListener('click', beginQuizzBtnClickCallback);
+    onKeyHandlerCallback = null
+    beginQuizzBtnClickCallback = null
+    document.getElementById("nextBtn").value = "Suivant"
+    document.getElementById("quizzIntro").classList.remove("d-none")
+    document.getElementById("quizz").classList.add("d-none", "disappear")
+    goTo(launchingPage,viewerPage)
+    viewer()
 
-// }
+}
 
 
 async function showDataTab(question){
