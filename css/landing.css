@@ -1,0 +1,32 @@
+
+.landingText {
+    position: absolute;
+    width: 30%;
+    left: 10%;
+    top: 30%;
+    font-size: 1.2em;
+}
+
+.landingBtn {
+    background-color: rgba(255,255,255,0.4);
+    padding: 0.5rem;
+    border: solid 2px white;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    position: inherit;
+    margin: 5% 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.landingBtn:hover{
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.6);
+}
+
+.landingBtnContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}

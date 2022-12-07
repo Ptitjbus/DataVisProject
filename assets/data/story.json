@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "text": "Bienvenue à toi, je suis l’agent n°8475. Tu es le nouveau stagiaire c’est ça ? ",
+        "btnInner": "'Entrer' pour continuer"
+    },
+    {
+        "id": 2,
+        "text": "Super ! Avant de te parler de ta mission, sais-tu vraiment ce que sont les débris spatiaux ?",
+        "btnInner": "'Entrer' pour continuer"
+    },
+    {
+        "id": 3,
+        "text": "Pour cette mission, tu as été attribué à mon équipe, tu vas donc devoir m’aider dans notre mission de <strong> dépollution des débris spatiaux </strong> dans l’espace qui ont été recensés au cours des <strong>60 derniers jour</strong>. Je vais te parler de tout ce dont tu as besoin pour mener à bien notre mission. Je te confierai ensuite le <strong> lancement de notre vaisseau ramasseur </strong> lorsque tu seras prêt. ",
+        "btnInner": "'Entrer' pour continuer"
+    },
+    {
+        "id": 4,
+        "text": "Allez, c’est parti, partons à la découverte des débris spatiaux !",
+        "btnInner": "'Entrer' pour continuer"
+    },
+    {
+        "id": 5,
+        "text": "Wouah ! Regarde-moi tous ces débris ! Comment va-t-on reconnaitre ceux que nous devons ramasser ?",
+        "btnInner": null
+    },
+    {
+        "id": 6,
+        "text": "Eh ! Regarde, un nouvel écran est apparu dans notre champs de vision. Il va te permettre de lancer notre vaisseau ramasseur et choisir le type de débris que tu souhaites récupérer.",
+        "btnInner": null
+    },
+    {
+        "id": 7,
+        "text": "Oh non ! Je crois que ta réponse est incorrecte. Retente ta chance, il faut que cette mission soit un succès.",
+        "btnInner": null
+    }
+]

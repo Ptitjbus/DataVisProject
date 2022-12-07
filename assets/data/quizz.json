@@ -1,0 +1,31 @@
+[
+    {
+        "id":1,
+        "text":"Nous devons rammasser les débris de l’année en ayant contenu le plus. De quelle année s’agit-il ?",
+        "answers":["1980","2005","2016","2022"],
+        "goodAnwserId":3
+
+    },
+    {
+        "id":2,
+        "text":"Quel type de fragmentation trouvons-nous le plus dans l’espace ?",
+        "answers":["Explosions","Destructions délibérées","Inconnu","Autre"],
+        "goodAnwserId":0
+
+    },
+    {
+        "id":3,
+        "text":"Nous souhaitons ramasser les débris les plus présents dans l’espace. Lesquels sont-ils ?",
+        "answers":["MOINS DE 1 cm","DE 1 À 10 CM","PLUS DE 10 CM"],
+        "goodAnwserId":0
+
+    },
+    {
+        "id":4,
+        "text":"Nous souhaitons désencombrer l’orbite la plus saturée. De laquelle s’agit-il ?",
+        "answers":["Orbite basse","orbites intermédiaires","Obite géostationnaire"],
+        "goodAnwserId":0
+
+    }
+    
+]

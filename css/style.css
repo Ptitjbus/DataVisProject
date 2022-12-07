@@ -1,0 +1,682 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--white);
+  font-family: 'Noto Sans', serif;
+  font-size: 16px;
+}
+
+:root{
+  --darkBlue:rgba(9, 3, 38,1);
+  --darkBlueSelected:rgba(29, 23, 58,1);
+  --white : white;
+  --white50: rgba(255,255,255,0.5);
+  --fadePurple: #51536A;
+  --black : #000;
+  --lightBlue :#fff3c0 ;
+  --greyBlue: rgb(62,75,79);
+  --greyBlueGradientCircle:radial-gradient(circle, rgba(70,144,212,0.2) 0%, rgba(110,191,244,0.2) 22.5%, rgba(165,239,255,0.2) 100%) ;
+  --greyBlueGradient :linear-gradient(90deg, rgba(62,75,79,0.5) 0%, rgba(42,45,46,0.5) 100%);
+}
+
+select {
+  background-color: var(--fadePurple);
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 2%;
+  width: 100%;
+}
+
+option:hover{
+  background-color:var(--darkBlue);
+}
+
+.button {
+  border: none;
+  background-color: var(--fadePurple);
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  border: solid 1px var(--fadePurple);
+  text-transform: uppercase;
+  color: var(--white50);
+  transition: all 0.1s ease-in-out;
+  margin-right: 10px;
+}
+
+.button:hover{
+  border-color: var(--white);
+  color: white;
+  cursor: pointer;
+}
+
+.activeBtn{
+  background-color: var(--white) !important;
+  color: var(--black);
+}
+
+.d-none{
+  display: none !important;
+}
+
+body {
+  overflow: hidden;
+  height: 100%;
+  background-color: var(--darkBlue);
+  background: url("../assets/textures/background.webp") center center no-repeat;
+  background-size: cover;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.p-2{
+  padding: 2rem !important;
+}
+
+.p-3{
+  padding: 3rem !important;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.w-75{
+  width: 75%;
+}
+
+.w-50{
+  width: 50%;
+}
+
+.w-25{
+  width: 25%;
+}
+
+
+.h-100{
+  height: 100%;
+}
+
+.h-75{
+  height: 75%;
+}
+
+.h-50{
+  height: 50%;
+}
+
+.h-25{
+  height: 25%;
+}
+
+.allCentered{
+  align-items: center;
+  justify-content: center;
+}
+
+.relative{
+  position: relative !important;
+}
+
+.z-0{
+  z-index: 0;
+}
+
+.z-1{
+  z-index: 1;
+}
+
+.z-2{
+  z-index: 2;
+}
+
+.opacity-0{
+  opacity: 0;
+}
+
+.opacity-25{
+  opacity: 0.25;
+}
+
+.opacity-50{
+  opacity: 0.5;
+}
+
+.opacity-75{
+  opacity: 0.75;
+}
+
+.mx-10px{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.rotateAnim{
+  animation: rotateAnim 3s infinite;
+}
+
+@keyframes rotateAnim {
+  0%{
+    opacity: 25%;
+  }
+  20%{
+    opacity: 30%;
+  }
+  50%{
+    opacity: 20%;
+  }
+  100%{
+    opacity: 25%;
+  }
+
+}
+
+.backgroundImg{
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+}
+
+#cesiumContainer {
+  height: 100%;
+}
+#loading {
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  opacity: 1;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s, visibility 0.5s;
+  visibility: visible;
+  z-index: 3;
+}
+
+
+.disappear {
+  opacity: 0!important;
+  visibility: hidden!important;
+}
+
+#cesiumContainer{
+    width: 100%;
+}
+
+.cesium-viewer-bottom{
+  display: none !important;
+}
+
+.cesium-viewer-timelineContainer{
+  display: none !important;
+}
+
+.cesium-viewer-animationContainer{
+  display: none !important;
+}
+
+
+
+
+.viewer{
+  width: 140vw;
+  position: absolute;
+  height: 100vh !important;
+}
+
+.textboxContainer{
+  width: 30vw;
+  height: 70vh;
+  position: absolute;
+  left: -100%;
+  top: 10vh;
+  padding: 2% 3%;
+  transition: all 0.5s ease;
+}
+
+.activeTab{
+  left: 3% !important;
+}
+
+.debInfo {
+  height: 35%;
+  width: 100%;
+  background: var(--lightBlue);
+  background: var(--greyBlueGradientCircle);
+  border-radius: 0.5rem;
+}
+
+.filterBox {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 5%;
+  z-index: 1;
+  position: relative;
+}
+
+.filterBox > h3{
+  margin-bottom: 2%;
+}
+
+.checkboxContent{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.satelliteContainer{
+  position: absolute;
+  width: 50vw;
+  height: 100vh;
+  right: 5%;
+}
+
+#satelliteContainer {
+  position: absolute;
+  right: 5%;
+  height: 100%;
+  width: 50vw;
+}
+
+
+.hublotLayerContainer{
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+  height: 100vh;
+  width: 100vw;
+}
+
+.hublotLayerContainer > img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%; 
+}
+
+.containerFlexCentered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+#introPage{
+  background-color: var(--darkBlue);
+}
+
+.logoBarret{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.page{
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: var(--darkBlue);
+  transition: all 0.5s ease-in-out;
+}
+
+.introContainer{
+  position: absolute;
+  width: 50vw;
+  height: 40vh;
+}
+
+#introText {
+  position: absolute;
+  text-align: left;
+  top: 32%;
+  left: 40vw;
+  width: 28vw;
+  font-size: 2vh;
+}
+
+#introText > strong {
+  font-size: 2.3vh;
+  margin: 0 3px;
+  color: var(--white50);
+}
+
+#introContinueBtn {
+  position: absolute;
+  right: 32vw;
+  bottom: 40vh;
+  font-size: 2vh;
+  transition: all 0.5s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.initVue{
+  color: var(--white50);
+  transition: all 0.5s ease-in-out;
+}
+
+.initVue:hover{
+  color: var(--white);
+  cursor: pointer;
+}
+
+.helper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+  transition: all 0.5s ease;
+}
+
+.helperPopup {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+
+.v-inversed{
+  transform: rotateY(180deg) !important;
+}
+
+.helprText, .helprTextInverted{
+  position: absolute;
+  top: 20%;
+  width: 60%;
+}
+
+.helprTextInverted{
+  left: 5%;
+}
+
+.helprText {
+  right: 5%;
+}
+
+.r-0 {
+  right: 0;
+}
+
+.helperContainerAbsolute {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  width: 35%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.closeBtn, .closeBtnInversed{
+    position: absolute;
+    top: 8%;
+    transition: all 0.3s ease;
+    pointer-events: all;
+}
+
+.closeBtn:hover, .closeBtnInversed:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.closeBtnInversed {
+  left: 5%;
+}
+
+.closeBtn {
+  right: 5%;
+}
+
+.bottomBarContainer {
+  position: absolute;
+  width: 100vw;
+  height: 0;
+  background-color: #030621;
+  bottom: 0;
+  z-index: 3;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizzBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid #333337;
+  width: 70%;
+  height: 80%;
+}
+
+.questionSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 70%;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.questionContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.moreInfo, .moreInfo > strong{
+  color: var(--white50);
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 10%;
+  bottom: 6%;
+}
+
+.moreInfo:hover, .moreInfo:hover > strong{
+  cursor: pointer;
+  color: var(--white);
+}
+
+.infoNextSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.infoNextSectionIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pageInfo {
+  margin-bottom: 20px;
+}
+
+.inputRadio{
+  transition: all 0.5s ease;
+}
+
+.answersButton:checked{
+  background-color: var(--white) !important;
+  color: var(--black);
+}
+
+.controlPanelBackground {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.textboxContainer > h1{
+  font-size: 1.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.textboxContainer > .description{
+  font-size: 0.7em;
+  margin-bottom: 5%;
+}
+
+.controlPanel {
+  border-top: 1px solid var(--white50);
+  padding-top: 5%;
+}
+
+.textboxContainer > p, .textboxContainer > ul > li > p{
+  font-size: 0.8em;
+}
+
+.statsContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.statContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.statContainer > p{
+  font-size: 0.8em;
+  color: var(--white50);
+  padding: 2% 5%;
+}
+
+.statContainer > h4{
+  font-size: 24px;
+}
+
+.skipIntroInfo {
+  position: absolute;
+  bottom: 50px;
+  width: 100vw;
+  text-align: center;
+  color: var(--greyBlue);
+}
+
+.soundButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  border: 1px solid var(--white50);
+  position: absolute;
+  bottom: 5%;
+  display: flex;
+  right: 5%;
+  z-index: 5;
+}
+
+.soundButton, .soundButton > svg{
+  color: var(--white50);
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.soundButton:hover, .soundButton:hover > svg{
+  color: var(--white);
+  cursor: pointer;
+  transform: scale(0.9);
+}
+
+.credits {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 32vw;
+  height: 35vh;
+}
+
+.credits > div {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+.credits > div > h2, .sources > div > h1 {
+  margin-bottom: 10px;
+}
+
+.sources{
+  position: absolute;
+  left: 10%;
+  bottom: 10%;
+  width: 35vw;
+}
+
+.returnLanding {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  display: flex;
+  align-items: center;
+  width: 5vw;
+  height: 20px;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+  color: var(--white50);
+}
+
+.returnLanding > svg {
+  fill: var(--white50);
+  transition: all 0.5s ease;
+}
+.returnLanding:hover > svg, .returnLanding:hover {
+  color: var(--white);
+  cursor: pointer;
+  fill: var(--white);
+}
+
+.cover{
+  object-fit: cover;
+}
+
+.reloadExperienceContainer{
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.reloadExperienceContainer > input{
+  width: 20%;
+}
