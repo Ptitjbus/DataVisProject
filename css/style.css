@@ -43,12 +43,14 @@ option:hover{
   color: var(--white50);
   transition: all 0.1s ease-in-out;
   margin-right: 10px;
+  user-select:none;
 }
 
 .button:hover{
   border-color: var(--white);
   color: white;
   cursor: pointer;
+  background-color: var(--fadePurple) !important;
 }
 
 .activeBtn{
@@ -679,4 +681,9 @@ body {
 
 .reloadExperienceContainer > input{
   width: 20%;
+}
+
+.animation4{
+  height: 30%;
+  margin: 5% 0;
 }
