@@ -221,14 +221,14 @@ function waitingGoodAnwser(question) {
         function onKeyHandler(e, question) {
             e.preventDefault()
             if(Array.from(document.querySelectorAll(".anwser")).some(element => element.checked)){
-                if(question.id === 4){
-                    launching()
-                }
                 let isGood = false
                 for(let input of document.getElementsByName(`radioAwnser${question.id}`)){
                     if(input.checked){
                         isGood = parseInt(input.dataset.answerid) === question.goodAnwserId
                     }
+                }
+                if(question.id === 4 && isGood){
+                    launching()
                 }
                 if (isGood) {
                     document.getElementById("nextBtn").removeEventListener('click', onKeyHandlerCallback);
