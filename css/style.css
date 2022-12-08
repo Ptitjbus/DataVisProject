@@ -20,6 +20,12 @@
   --greyBlueGradient :linear-gradient(90deg, rgba(62,75,79,0.5) 0%, rgba(42,45,46,0.5) 100%);
 }
 
+h1{
+  font-family: alfarn, serif;
+  font-weight: 400 ;
+  font-style: normal ;
+}
+
 select {
   background-color: var(--fadePurple);
   border: 0;
@@ -263,13 +269,26 @@ body {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  margin-bottom: 5%;
+  margin-bottom: 4%;
   z-index: 1;
   position: relative;
 }
 
-.filterBox > h3{
+.filterBox > h3 {
   margin-bottom: 2%;
+  display: flex;
+  align-items: center;
+}
+
+.filterBox > p{
+  font-size: 0.8rem;
+  color: var(--white50);
+  margin-top: 5px;
+}
+
+.detailsTitle{
+    color: var(--white50);
+    font-size: 0.7rem;
 }
 
 .checkboxContent{
@@ -686,4 +705,14 @@ body {
 .animation4{
   height: 30%;
   margin: 5% 0;
+}
+
+.schoolCredits{
+  display: flex;
+  margin-top: 10px;
+}
+
+.schoolCredits > img{
+  height: 40px;
+  margin-right: 10px;
 }
