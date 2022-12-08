@@ -249,7 +249,7 @@ function launching(){
     let playAgain = setTimeout(function(){
         let reloadExperience = document.getElementById("reloadExperience")
         reloadExperience.classList.remove("d-none")
-        reloadExperience.addEventListener("click",(e)=>{
+        document.getElementById("reloadExperienceBtn").addEventListener("click",(e)=>{
             e.preventDefault()      
             if(!replayCounter){
                 initViewer()
